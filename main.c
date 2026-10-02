@@ -46,7 +46,7 @@ int main(){
         //reports();
     }
     else if (choice == 6 ){
-        printf("\nExiting the system. Goodbye!\n");
+        printf("\nExiting the system\n");
         return 0;
     }
     else{
