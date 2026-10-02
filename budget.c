@@ -9,3 +9,7 @@ char status[10][30];
 int i = 0;
 int choice;
 
+float calculateremainBudget(float allocated, float used){
+    return allocated - used;
+}
+
