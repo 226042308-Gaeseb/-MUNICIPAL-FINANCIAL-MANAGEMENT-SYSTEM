@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "budget.h"
 
 char departmentName[10][50] = {"Finance", "Health", "Water", "Electricty", "Roads", "Housing", "Planning", "Waste", "IT", "HR"};
 float allocatedBudget[10] = {0};
