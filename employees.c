@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "employees.h"
-#include "main.c"
 void calculateSalaryInfo(double basic, double housing, double transport, double *gross, double *net) {
     *gross = basic + housing + transport;
     double tax = *gross * 0.15;
@@ -156,7 +155,7 @@ void employeeMenu(char ids[][ID_LEN], char names[][NAME_LEN], char depts[][DEPT_
                 break;
             case 4:
                 printf("\nReturning to main menu...\n");
-                displayMenu();
+                break;
             default:
                 printf("\nInvalid Option: Please enter a number between 1 and 4.\n");
         }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "employees.h"
+#include "budget.h"
 
 char ids[MAX_EMPLOYEES][ID_LEN];
 char names[MAX_EMPLOYEES][NAME_LEN];
@@ -35,6 +36,11 @@ int displayMenu(){
         printf("\nYou have selected Employee Management.\n");
         printf("==========================================\n");
         employeeMenu(ids, names, depts, basicSalaries, housingAlls, transportAlls, &count);
+    }
+    else if (choice == 2){
+        printf("\nYou have selected Budget Management.\n");
+        printf("==========================================\n");
+        budgetMenu();
     }
 }
 
