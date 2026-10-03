@@ -2,9 +2,11 @@
 #define SUPPLIERS_H
 
 void addSupplier();
-void viewSuppliers();
+void displaySupplier();
 void searchSupplier();
-void updateSupplier();
-void deleteSupplier();
+void showNameLength();
+void copySupplierName();
+void combineSupplierInfo();
+void supplierMenu();
 
 #endif
