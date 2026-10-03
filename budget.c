@@ -2,7 +2,7 @@
 #include <string.h>
 #include "budget.h"
 
-char departmentName[10][50] = {"Finance", "Health", "Water", "Electricty", "Roads", "Housing", "Planning", "Waste", "IT", "HR"};
+char departmentName[10][50] = {"Finance", "Health", "Water", "Electricity", "Roads", "Housing", "Planning", "Waste", "IT", "HR"};
 float allocatedBudget[10] = {0};
 float expenditure[10] = {0};
 float remainBudget[10] = {0};
@@ -29,7 +29,7 @@ void displayBudget(){
 
 void showOverspent(){
     for(i = 0; i < 10; i++){
-        if(remainBudget[i] < 0){
+        if(remainBudget[i]< 0){
             printf("%s has exceeded their allocated budget\n", departmentName[i]);
         }
     }
@@ -40,20 +40,21 @@ void enterdepartment(){
         printf("%d. %s\n", i +1, departmentName[i]); //it printd the number of choice and the department name
 }
 
-printf("[Pick a number from 1 to 10: ]");
+printf("pick number from 1 to 10: ");
 scanf("%d", &choice);
 
 printf("%s\n", departmentName[choice - 1]);//open the locker one less than the number the user typed, because lockers start at 0
 
 printf("Enter the budget amount:");
-scanf("%f", &allocatedBudget);
+scanf("%f", &allocatedBudget[choice - 1]);
 
-if(allocatedBudget[choice - 1]){
+if(allocatedBudget[choice - 1] < 0){
     printf("allocatedBudget cannot be negative\n");
+    return;
 }
 
 printf("Enter the expenditure amount: ");
-scanf("%f", &expenditure);
+scanf("%f", &expenditure[choice - 1]);
 
 
 if(expenditure[choice - 1] < 0){
