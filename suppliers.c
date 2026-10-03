@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "suppliers.h"
 
     char supplierID[10]; 
     char supplier_name [50];
@@ -132,7 +133,7 @@ void supplierMenu()
                 break;
 
             case 5:
-                printf("Exiting Supplier Management...\n");
+                printf("Exiting Supplier Management.\n Thank You!\n");
                 break;
 
             default:
@@ -146,6 +147,6 @@ int main()
 {
    
     supplierMenu();
-    
+
     return 0;
 }
