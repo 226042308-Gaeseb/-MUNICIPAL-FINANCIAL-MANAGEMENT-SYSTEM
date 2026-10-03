@@ -77,3 +77,5 @@ if(expenditure[choice - 1] < 0){
     
 }
 
+
+
