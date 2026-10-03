@@ -1,6 +1,17 @@
 #include <stdio.h>
-#include "employeemanagement.c"
-int main(){
+#include "employees.h"
+
+char ids[MAX_EMPLOYEES][ID_LEN];
+char names[MAX_EMPLOYEES][NAME_LEN];
+char depts[MAX_EMPLOYEES][DEPT_LEN];
+
+double basicSalaries[MAX_EMPLOYEES];
+double housingAlls[MAX_EMPLOYEES];
+double transportAlls[MAX_EMPLOYEES];
+
+int count = 0;
+
+int displayMenu(){
     int choice;
     printf("=================================================\n");
     printf("===== MUNICIPAL FINANCIAL MANAGEMENT SYSTEM =====\n");
@@ -17,41 +28,17 @@ int main(){
     printf("6. Exit\n");
     printf("==========================================\n");
 
-    printf("\nEnter your choice: ");
+    printf("Enter your choice from (1-6): ");
     scanf("%d", &choice);
 
     if (choice == 1){
-        printf("\nWelcome to Employee Management.\n");
-        printf("---------------------------------\n");
-        displayEmployeeManagementMenu();
+        printf("\nYou have selected Employee Management.\n");
+        printf("==========================================\n");
+        employeeMenu(ids, names, depts, basicSalaries, housingAlls, transportAlls, &count);
     }
-    else if (choice == 2 ){
-        printf("\nWelcome to Budget Management.\n");
-        printf("-------------------------------\n");
-        //budgetManagement();
-    }
-    else if (choice == 3 ){
-        printf("\nWelcome to Asset Management.\n");
-        printf("-------------------------------\n");
-        //assetManagement();
-    }
-    else if (choice == 4 ){
-        printf("\nWelcome to Supplier Management.\n");
-        printf("---------------------------------\n");
-        //supplierManagement();
-    }
-    else if (choice == 5 ){
-        printf("\nWelcome to Reports.\n");
-        printf("--------------------\n");
-        //reports();
-    }
-    else if (choice == 6 ){
-        printf("\nExiting the system\n");
-        return 0;
-    }
-    else{
-        printf("\nInvalid choice. Please try again.\n");
-    }
+}
 
+int main(){
+    displayMenu();
     return 0;
 }
