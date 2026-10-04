@@ -1,4 +1,9 @@
-/* reports.c - reports module for the Municipal FInancial Management System Group*/
+/* reports.c - reports module for the Municipal FInancial Management System Group
+The reports read their data from the other modules:
+     - Employees : arrays that main owns, passed into displayReportsMenu()
+     - Budget    : global arrays in budget.c
+     - Suppliers : global arrays in suppliers.c
+     - Assets    : global array in Assets.c*/
 #include <stdio.h>
 #include <string.h>
 #include "reports.h"
@@ -13,6 +18,39 @@ void printReportLine()
 void printReportLines()
 {
     printReportLine();
+}
+/*Reads the number the user types for the menu.
+  Blank lines are skipped (a leftover newline from an earlier scanf would
+  otherwise count as an empty choice). Returns -1 if the input is not a
+  number, and 5 (Back) if the input has ended.*/
+static int readMenuChoice(void)
+{
+    char line[64];
+    int choice;
+
+    while (fgets(line, sizeof(line), stdin) != NULL)
+    {
+        if (sscanf(line, "%d", &choice) == 1)
+        {
+            return choice;
+        }
+
+        if (line[strspn(line, " \t\r\n")] != '\0')
+        {
+            return -1;
+        }
+    }
+
+    return 5;
+}
+
+/*Waits for the user to press Enter so the report stays on screen*/
+static void waitForEnter(void)
+{
+    char line[64];
+
+    printf("\nPress Enter to return to the Reports menu...");
+    fgets(line, sizeof(line), stdin);
 }
 
 /*this prints and displays the reports sub menue*/
@@ -29,6 +67,47 @@ void displayReportsMenu()
     printf("Enter your choice: ");
 }
 
+void displayReportsMenu(char names[][NAME_LEN], double basicSalaries[],
+                        double housingAlls[], double transportAlls[],
+                        int employeeCount)
+{
+    int choice;
+
+    do
+    {
+        printReportsMenu();
+        choice = readMenuChoice();
+
+        switch (choice)
+        {
+            case 1:
+                employeeReport(names, basicSalaries, housingAlls, transportAlls,
+                               employeeCount);
+                waitForEnter();
+                break;
+            case 2:
+                budgetReport(departmentName, allocatedBudget, expenditure,
+                             DEPARTMENT_COUNT);
+                waitForEnter();
+                break;
+            case 3:
+                supplierReport(supplierID, supplier_name, email, telephone_number,
+                               town, supplierCount);
+                waitForEnter();
+                break;
+            case 4:
+                assetReport(assets, assetCount);
+                waitForEnter();
+                break;
+            case 5:
+                printf("\nReturning to the main menu...\n");
+                break;
+            default:
+                printf("\nInvalid choice. Please enter a number from 1 to 5.\n");
+                break;
+        }
+    } while (choice != 5);
+}
 /*----------------------------------------------------------------------
     Employee Report
     Gross salary = basic + housing + transport
