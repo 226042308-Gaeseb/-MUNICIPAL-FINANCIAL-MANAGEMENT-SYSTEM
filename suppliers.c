@@ -2,7 +2,7 @@
 #include <string.h>
 #include "suppliers.h"
 
-#define MAX_SUPPLIERS 5
+#define MAX_SUPPLIERS 10
 
 char supplierID[MAX_SUPPLIERS][10];
 char supplier_name[MAX_SUPPLIERS][50];
@@ -178,12 +178,4 @@ void supplierMenu()
         }
 
     } while(choice != 5);
-}
-
-int main()
-{
-   
-    supplierMenu();
-
-    return 0;
 }

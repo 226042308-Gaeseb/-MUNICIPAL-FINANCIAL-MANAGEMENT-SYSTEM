@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "employees.h"
+
 void calculateSalaryInfo(double basic, double housing, double transport, double *gross, double *net) {
     *gross = basic + housing + transport;
     double tax = *gross * 0.15;

@@ -74,29 +74,28 @@ if(expenditure[choice - 1] < 0){
 
     printf("%.2f\n", remainBudget[choice - 1]);
     printf("%s\n", status[choice - 1]);
- 
 }
-void budgetMenu(){
+
+void budgetsMenu() {
     int choice = 0;
-    
+
     do {
         printf("\n===================================\n");
-        printf("    BUDGET MANAGEMENT MENU         \n");
+        printf("      BUDGET MANAGEMENT MENU       \n");
         printf("===================================\n");
-        printf("1. Display budget information\n");
-        printf("2. Enter department budget\n");
-        printf("3. Show overspent departments\n");
+        printf("1. Enter Department Budget\n");
+        printf("2. Display Budget Information\n");
+        printf("3. Show Overspent Departments\n");
         printf("4. Return to Main Menu\n");
-        printf("-------------------------------------\n");
         printf("Enter your choice (1-4): ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                displayBudget();
+                enterdepartment();
                 break;
             case 2:
-                enterdepartment();
+                displayBudget();
                 break;
             case 3:
                 showOverspent();
@@ -109,6 +108,3 @@ void budgetMenu(){
         }
     } while (choice != 4);
 }
-
-
-

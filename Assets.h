@@ -15,5 +15,6 @@ typedef struct {
 void addAsset(Asset assets[], int *count);
 void displayAssets(const Asset assets[], int count);
 void searchAsset(const Asset assets[], int count);
+void assetsMenu(void);
 
 #endif

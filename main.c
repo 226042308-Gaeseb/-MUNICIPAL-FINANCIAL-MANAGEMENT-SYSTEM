@@ -2,6 +2,8 @@
 #include "employees.h"
 #include "budget.h"
 #include "suppliers.h"
+#include "Assets.h"
+#include "reports.h"
 
 char ids[MAX_EMPLOYEES][ID_LEN];
 char names[MAX_EMPLOYEES][NAME_LEN];
@@ -12,6 +14,21 @@ double housingAlls[MAX_EMPLOYEES];
 double transportAlls[MAX_EMPLOYEES];
 
 int count = 0;
+extern Asset assets[];
+extern char departmentName[][50];
+extern float allocatedBudget[];
+extern float expenditure[];
+
+extern char supplierID[][10];
+extern char supplier_name[][50];
+extern char email[][50];
+extern char telephone_number[][15];
+extern char town[][50];
+extern int supplierCount;
+
+extern int assetCount;
+
+int budgetCount = 0;
 
 int displayMenu(){
     int choice;
@@ -41,12 +58,12 @@ int displayMenu(){
     else if (choice == 2){
         printf("\nYou have selected Budget Management.\n");
         printf("==========================================\n");
-        budgetMenu();
+        budgetsMenu();
     }
     else if (choice == 3){
         printf("\nYou have selected Asset Management.\n");
         printf("==========================================\n");
-        // Call asset management function here
+        assetsMenu();
     }
     else if (choice == 4){
         printf("\nYou have selected Supplier Management.\n");
@@ -56,7 +73,25 @@ int displayMenu(){
     else if (choice == 5){
         printf("\nYou have selected Reports.\n");
         printf("==========================================\n");
-        // Call reports function here
+        displayReportsMenu(
+            names,
+            basicSalaries,
+            housingAlls,
+            transportAlls,
+            departmentName,
+            allocatedBudget,
+            expenditure,
+            supplierID,
+            supplier_name,
+            email,
+            telephone_number,
+            town,
+            assets,
+            budgetCount,
+            supplierCount,
+            assetCount,
+            count
+        );
     }
     else if (choice == 6){
         printf("\nExiting the program. Goodbye!\n");

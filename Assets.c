@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include "assets.h"
+#include "Assets.h"
+
+Asset assets[MAX_ASSETS];
 
 void addAsset(Asset assets[], int *count) {
     if (*count >= MAX_ASSETS) {
@@ -34,10 +36,12 @@ void addAsset(Asset assets[], int *count) {
     }
 
     printf("Enter Department: ");
-    scanf(" %[^\n]", newAsset.department);
+    fgets(newAsset.department, sizeof(newAsset.department), stdin);
+    newAsset.department[strcspn(newAsset.department, "\n")] = '\0';
 
     printf("Enter Condition (Good/Fair/Poor): ");
-    scanf(" %[^\n]", newAsset.condition);
+    fgets(newAsset.condition, sizeof(newAsset.condition), stdin);
+    newAsset.condition[strcspn(newAsset.condition, "\n")] = '\0';
 
     assets[*count] = newAsset;
     (*count)++;
@@ -99,4 +103,39 @@ void searchAsset(const Asset assets[], int count) {
     if (!found) {
         printf("[INFO] No matching asset found for '%s'.\n", searchQuery);
     }
+}
+
+/* shared with the reports module (report.c) */
+Asset assets[MAX_ASSETS];
+int assetCount = 0;
+
+void assetsMenu(){
+    int choice;
+
+    do {
+        printf("\n=== MUNICIPAL ASSET MANAGEMENT MENU ===\n");
+        printf("1. Add New Asset\n");
+        printf("2. Display All Assets\n");
+        printf("3. Search for an Asset\n");
+        printf("4. Return to Main Menu\n");
+        printf("Enter your choice (1-4): ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addAsset(assets, &assetCount);
+                break;
+            case 2:
+                displayAssets(assets, assetCount);
+                break;
+            case 3:
+                searchAsset(assets, assetCount);
+                break;
+            case 4:
+                printf("Returning to Main Menu...\n");
+                break;
+            default:
+                printf("[ERROR] Invalid choice. Please select a valid option.\n");
+        }
+    } while (choice != 4);
 }
