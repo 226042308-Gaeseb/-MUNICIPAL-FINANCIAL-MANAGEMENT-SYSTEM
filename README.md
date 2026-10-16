@@ -164,7 +164,7 @@ After successfully compiling the program, run it using:
 Linux / Ubuntu
 ./municipal_FMS
 Windows
-municipal_FMS.exe
+./municipal_FMS
 
 The main menu will appear, allowing the user to select the required module.
 
