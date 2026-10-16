@@ -1,6 +1,6 @@
 Municipal Financial Management system
 
-Project: Project A – Municipal Financial Management System
+Project: Project A Municipal Financial Management System
 Programming Language: ANSI C (C99)
 Development Environment: Visual Studio Code + GCC
 Version Control: Git & GitHub
@@ -17,7 +17,7 @@ No.	Name	Student Number	Responsibility
 
 Project Description
 
-The Municipal Financial Management System (MFMS) is a C-based application developed for PAP521S – Programming in Practice.
+The Municipal Financial Management System (MFMS) is a C-based application developed for PAP521S Programming in Practice.
 The purpose of the system is to provide a foundation for managing basic municipal financial information.
 The system demonstrates the application of programming concepts covered during the first part of the course,
 including variables, data types, input validation, decision-making, loops, arrays, strings, and functions
