@@ -162,9 +162,9 @@ If your project uses additional source files, include them in the compilation co
 After successfully compiling the program, run it using:
 
 Linux / Ubuntu
-./MFMS
+./municipal_FMS
 Windows
-MFMS.exe
+municipal_FMS.exe
 
 The main menu will appear, allowing the user to select the required module.
 
